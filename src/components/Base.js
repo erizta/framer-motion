@@ -2,6 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion/dist/framer-motion";
 
+const buttonVariants = {
+  hover: {
+    scale: 1.1,
+    textShadow: "0px 0px 8px rgb(255,255,255)",
+    boxShadow: "0px 0px 8px rgb(255,255,255)",
+    transition: {
+      duration: 0.3,
+      yoyo: Infinity,
+    },
+  },
+};
+
 const containerVariants = {
   hidden: {
     opacity: 0,
@@ -17,17 +29,18 @@ const containerVariants = {
   },
 };
 
-const nextVariants={
-  hidden:{
-    x: '100vw'
+const nextVariants = {
+  hidden: {
+    x: "100vw",
   },
-  visible:{
-    x:0,
-    transition:{
-      type: 'spring', stiffness:120
-    }
-  }
-}
+  visible: {
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 120,
+    },
+  },
+};
 
 const Base = ({ addBase, pizza }) => {
   const bases = ["Classic", "Thin & Crispy", "Thick Crust"];
@@ -58,18 +71,9 @@ const Base = ({ addBase, pizza }) => {
       </ul>
 
       {pizza.base && (
-        <motion.div
-          className="next"
-          variants={nextVariants}
-        >
+        <motion.div className="next" variants={nextVariants}>
           <Link to="/toppings">
-            <motion.button
-              whileHover={{
-                scale: 1.1,
-                textShadow: "0px 0px 8px rgb(255,255,255)",
-                boxShadow: "0px 0px 8px rgb(255,255,255)",
-              }}
-            >
+            <motion.button variants={buttonVariants} whileHover="hover">
               Next
             </motion.button>
           </Link>
